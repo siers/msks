@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  rethink:
+    image: rethinkdb
+    ports:
+    - 28015:28015 
+    - 8080:8080
+
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+    ports:
+    - 9200:9200
+    environment:
+    - http.host=0.0.0.0
+    - transport.host=127.0.0.1

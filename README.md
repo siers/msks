@@ -26,6 +26,10 @@ Msks server requires [RethinkDB](https://www.rethinkdb.com/) & [Elasticsearch](h
 
     docker run -d --name msks-elastic -p 9200:9200 -e "http.host=0.0.0.0" -e "transport.host=127.0.0.1" docker.elastic.co/elasticsearch/elasticsearch:5.5.1
 
+You can also achieve the same effect with docker-compose.
+
+    docker-compose -f docker-compose.dev.yml up -d
+
 ### Configuration
 
 Copy `config.example.toml` to `config.toml`. Default config should be good enough to get your msks up and running.
