@@ -1,6 +1,7 @@
 const fp = require('lodash/fp')
 
 const elastic = require('./index')
+const config = require('../config')
 const { getMessagesByIds } = require('../rethink/queries')
 
 const toBody = message =>
@@ -12,6 +13,10 @@ const toBody = message =>
   ], message)
 
 const indexMessage = message => {
+  if (config.elastic.enable !== true) {
+    return;
+  }
+
   return elastic.index({
     index: 'messages',
     type: 'message',

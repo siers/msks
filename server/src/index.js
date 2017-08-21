@@ -95,7 +95,7 @@ _.forEach(eventMap, (fn, name) => {
 
 Promise.all([
   waitForRethink(),
-  waitForElastic(),
+  config.elastic.enable === true ? waitForElastic() : Promise.resolve(),
 ]).then(() => {
   server.listen(SERVER_PORT)
   logger.info(`Listening on port ${SERVER_PORT}...`)
